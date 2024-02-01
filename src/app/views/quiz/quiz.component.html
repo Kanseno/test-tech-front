@@ -1,0 +1,3 @@
+@for (question of questions; track $index) { @if($index === step - 1){
+<app-question (response)="onAnswer($event, $index)" [question]="question"></app-question>
+} }

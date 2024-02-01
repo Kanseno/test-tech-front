@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="first-half">
+  </div>
+  <div class="overlay">
+    <img class="logo" alt="logo" src="assets/logo.svg" />
+    <div class="wrapper">
+    <div class="middle">
+      @if (questions$ | async; as questions  ) {
+    <span>{{ questions.length }} questions</span>   
+      } @else {
+        <span style="height: 20px;"></span>
+      }
+    <h1 class="no-margin">Mon test technique</h1>
+    <app-button (clicked)="onClick()" [disabled]="!(questions$ | async)" value="Démarrer"></app-button>
+    </div>
+      <app-loader [class.hidden]="!!(questions$ | async)"></app-loader>
+    </div>
+    <div class="results">
+        <span>🏆</span>
+        <h4 class="semi-bold no-margin">Meilleur score</h4>
+        <h2 class="no-margin">09/10</h2>
+    </div>
+  </div>
+  <div class="second-half"></div>
+</div>

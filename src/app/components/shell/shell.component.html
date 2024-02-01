@@ -1,0 +1,8 @@
+@if(questions$ | async; as questions){
+<app-header [showTitles]="showTitles" [leftTitle]="'Question ' + step + '/' + questions.length" [rightTitle]="time.toString()"></app-header>
+<app-quiz [step]="step" [questions]="questions" (answered)="onAnswered()"></app-quiz>
+@if (step > questions.length) {
+<app-results></app-results> 
+}
+
+}

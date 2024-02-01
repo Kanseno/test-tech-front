@@ -1,0 +1,28 @@
+:host {
+       display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem; 
+    height: calc(100% - 150px);
+    justify-content: space-between;
+}
+
+mat-radio-group {
+    display: grid;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 2fr));
+    mat-radio-button {
+        min-width: 526px;
+        padding: 1rem;
+        background-color: var(--light-blue);
+    }
+}
+
+.mdc-form-field {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    width: 100%;
+    justify-content: space-between;
+}
