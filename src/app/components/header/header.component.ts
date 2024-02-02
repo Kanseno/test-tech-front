@@ -1,23 +1,24 @@
-import { Component, Input, inject } from '@angular/core';
-import { TimerComponent } from '../timer/timer.component';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [TimerComponent],
-  templateUrl: './header.component.html',
+  imports: [RouterLink],
+  template: `<section class="header">
+    @if(showTitles){
+    <div routerLink="/" class="left-title">
+      {{ leftTitle }}
+    </div>
+    <div class="right-title">
+      {{ rightTitle }}
+    </div>
+    }
+  </section>`,
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  router: Router = inject(Router);
-  isTimedOut: boolean = false;
-  @Input() showTitles: boolean = true;
+  @Input() showTitles: boolean = false;
   @Input() leftTitle?: string;
   @Input() rightTitle?: string;
-
-  onTimedOut(bool: boolean) {
-    this.router.navigate(['quiz', 'results']);
-    this.isTimedOut = bool;
-  }
 }

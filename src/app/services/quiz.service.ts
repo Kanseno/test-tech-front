@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Answer } from '../models/answer.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
   step = new Subject();
-  answers: { label: string; response: string; isCorrect: boolean }[] = [];
-  addAnswer(answer: { label: string; response: string; isCorrect: boolean }) {
+  answers: Answer[] = [];
+  addAnswer(answer: Answer) {
     this.answers.push(answer);
   }
-  constructor() {}
+
+  getAnswers() {
+    return this.answers;
+  }
 }

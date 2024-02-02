@@ -1,4 +1,33 @@
-<div class="result">
+<section class="result">
+  <div class="result-infos">
+    <span class="result-icon">🎉</span>
     <h2>Le Quiz est terminé !</h2>
-</div>
-
+    <div class="score">
+      <span class="big">{{ score + "/" + total }}</span>
+      <span>réponses justes</span>
+    </div>
+  </div>
+  <div class="result-details">
+    <h3>Détail des résultats :</h3>
+    @for (answer of answers; track $index) {
+    <div class="answer">
+      {{ answer.label + " " }}
+      @if (answer.isCorrect) {
+      <mat-icon
+      class="correct"
+        aria-hidden="false"
+        aria-label="Correct"
+        fontIcon="done"
+      ></mat-icon>
+      } @else {
+      <mat-icon
+      class="incorrect"
+        aria-hidden="false"
+        aria-label="Incorret"
+        fontIcon="close"
+      ></mat-icon>
+      }
+    </div>
+    }
+  </div>
+</section>

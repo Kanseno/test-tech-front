@@ -1,11 +1,17 @@
 <h2>{{ question.label }}</h2>
 
-@if(question.answerType === 'choice' ){
+@if(question.answerType === 'choice' || question.answerType ===
+'multiple-choice' ){
 <mat-radio-group aria-label="Select an option" [(ngModel)]="answer">
   @for (choice of question.choices; track choice) {
-  <mat-radio-button color="primary" labelPosition="before" [value]="choice">{{
-    choice
-  }}</mat-radio-button>
+  <div class="choice">
+    <span>{{ choice }}</span
+    ><mat-radio-button
+      color="primary"
+      labelPosition="before"
+      [value]="choice"
+    ></mat-radio-button>
+  </div>
   }
 </mat-radio-group>
 } @else if(question.answerType ==='text'){
@@ -13,10 +19,7 @@
   <mat-label>Votre réponse</mat-label>
   <input type="text" matInput [(ngModel)]="answer" />
 </mat-form-field>
-} @else if(question.answerType === 'multiple-choice'){ @for (choice of
-question.choices; track choice) {
-<mat-checkbox [(ngModel)]="answer">{{ choice }}</mat-checkbox>
-} }
+}
 <app-button
   (clicked)="onClick()"
   [disabled]="!answer"
