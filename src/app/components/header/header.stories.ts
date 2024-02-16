@@ -28,16 +28,6 @@ export default meta;
 type Story = StoryObj<HeaderComponent>;
 
 export const Default: Story = {
-  args: {
-    showTitles: false,
-    leftTitle: 'LeftTitle',
-    rightTitle: 'RightTitle',
-  },
+  args: {},
 };
 
-export const showTitles: Story = {
-  args: {
-    ...Default.args,
-    showTitles: true,
-  },
-};

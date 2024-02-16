@@ -1,15 +1,15 @@
 @if(questions$ | async; as questions){
-<app-header
-  [showTitles]="showTitles"
-  [leftTitle]="'Question ' + step + '/' + questions.length"
-  [rightTitle]="time.toString()"
-></app-header>
-@if(!showResults){
+<app-header>
+  <div routerLink="/" class="left-title">
+    {{ "Question " + step + "/" + questions.length }}
+  </div>
+  <div class="right-title">
+    {{ time.toString() }}
+  </div></app-header
+>
 <app-quiz
   [step]="step"
   [questions]="questions"
-  (answered)="onAnswered()"
+  (answered)="onAnswered(step, questions)"
 ></app-quiz>
-} @else {
-<app-results></app-results>
-} }
+}

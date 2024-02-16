@@ -6,19 +6,8 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   template: `<section class="header">
-    @if(showTitles){
-    <div routerLink="/" class="left-title">
-      {{ leftTitle }}
-    </div>
-    <div class="right-title">
-      {{ rightTitle }}
-    </div>
-    }
+    <ng-content></ng-content>
   </section>`,
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-  @Input() showTitles: boolean = false;
-  @Input() leftTitle?: string;
-  @Input() rightTitle?: string;
-}
+export class HeaderComponent {}

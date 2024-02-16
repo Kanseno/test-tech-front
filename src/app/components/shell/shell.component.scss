@@ -1,0 +1,13 @@
+.left-title, .right-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 81px;
+    height: 50%;
+    padding: 5px;
+    margin: 2rem;
+    font-size: 24px;
+    border-radius: 8px;
+    color: var(--text-100);
+    background-color: white;
+}

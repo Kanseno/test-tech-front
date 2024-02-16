@@ -1,10 +1,10 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, delay, first, share } from 'rxjs';
+import { Observable, delay, first } from 'rxjs';
 import { ButtonComponent } from '../../components/button/button.component';
 import { LoaderComponent } from '../../components/loader/loader.component';
-import { Question } from '../../models/question.model';
+import { QuestionTypes } from '../../models/question.model';
 import { QuestionsService } from '../../services/questions.service';
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ export class HomeComponent {
   private questionsService = inject(QuestionsService);
   private router = inject(Router);
 
-  questions$: Observable<Question[]>;
+  questions$: Observable<QuestionTypes[]>;
 
   constructor() {
     /**

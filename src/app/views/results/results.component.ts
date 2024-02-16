@@ -3,10 +3,11 @@ import { QuizService } from '../../services/quiz.service';
 import { Answer } from '../../models/answer.model';
 import { NgFor, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from '../../components/header/header.component';
 @Component({
   selector: 'app-results',
   standalone: true,
-  imports: [NgFor, NgIf, MatIconModule],
+  imports: [NgFor, NgIf, MatIconModule, HeaderComponent],
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss',
 })
