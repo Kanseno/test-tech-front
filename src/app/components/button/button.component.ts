@@ -11,9 +11,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() value: string = 'Default';
   @Input() disabled: boolean = false;
-  @Output() clicked = new EventEmitter();
+  @Output() clicked = new EventEmitter<void>();
 
   onClick() {
-    this.clicked.emit(true);
+    this.clicked.emit();
   }
 }

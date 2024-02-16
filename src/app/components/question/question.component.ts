@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Question } from '../../models/question.model';
+import { QuestionTypes } from '../../models/question.model';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -24,8 +24,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   styleUrl: './question.component.scss',
 })
 export class QuestionComponent {
-  @Input() question!: Question;
-  @Output() response = new EventEmitter();
+  @Input() question!: QuestionTypes;
+  @Output() response = new EventEmitter<string>();
 
   answer?: string;
 

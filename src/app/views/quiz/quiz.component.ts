@@ -7,10 +7,13 @@ import {
   Output,
   inject,
 } from '@angular/core';
-import { QuestionComponent } from '../../components/question/question.component';
-import { Question } from '../../models/question.model';
-import { QuizService } from '../../services/quiz.service';
 import { Router } from '@angular/router';
+import { QuestionComponent } from '../../components/question/question.component';
+import {
+  QuestionTypes,
+  getAnswer
+} from '../../models/question.model';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -22,9 +25,9 @@ import { Router } from '@angular/router';
 export class QuizComponent implements OnInit {
   router: Router = inject(Router);
   quizService: QuizService = inject(QuizService);
-  @Input() questions!: Question[];
+  @Input() questions!: QuestionTypes[];
   @Input() step!: number;
-  @Output() answered = new EventEmitter();
+  @Output() answered = new EventEmitter<void>();
 
   ngOnInit(): void {
     if (!this.questions.length) {
@@ -32,12 +35,13 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  onAnswer(event: any, index: number) {
+  onAnswer(event: string, index: number) {
     this.quizService.addAnswer({
       label: this.questions[index].label,
       response: event,
-      isCorrect: event === this.questions[index].answer,
+      isCorrect: event === getAnswer(this.questions[index]),
     });
-    this.answered.emit(true);
+
+    this.answered.emit();
   }
 }

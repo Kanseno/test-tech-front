@@ -1,15 +1,12 @@
-@if(questions$ | async; as questions){
+@if(questions$ | async; as questions){ 
 <app-header
   [showTitles]="showTitles"
   [leftTitle]="'Question ' + step + '/' + questions.length"
   [rightTitle]="time.toString()"
 ></app-header>
-@if(!showResults){
 <app-quiz
   [step]="step"
   [questions]="questions"
-  (answered)="onAnswered()"
+  (answered)="onAnswered(step, questions)"
 ></app-quiz>
-} @else {
-<app-results></app-results>
-} }
+}
